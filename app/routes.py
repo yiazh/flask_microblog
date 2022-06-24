@@ -4,10 +4,22 @@ Created on:
 Author: Yi Zheng, Department of Electrical Engineering, DTU
 
 '''
+from flask import render_template
 
 from app import app
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return 'Hello world'
+    user = {'username':'Yi Zheng'}
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+    {
+        'author': {'username': 'Susan'},
+        'body': 'The Avengers movie was so cool!'
+    }
+    ]
+    return render_template('index.html', user = user, posts = posts)
